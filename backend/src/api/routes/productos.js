@@ -1,10 +1,10 @@
 var express = require("express");
 
-const CategoriaController = require("../controllers/CategoriaController");
+const ProductoController = require("../controllers/ProductoController");
 
 var router = express.Router();
 
-router.get("/", CategoriaController.index);
+router.get("/", ProductoController.index);
 /*
 router.get("/:id", CategoriaController.bookDetail);
 router.post("/", CategoriaController.bookStore);

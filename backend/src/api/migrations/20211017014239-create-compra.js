@@ -1,39 +1,42 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Productos', {
+    await queryInterface.createTable('Compras', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      categoria_id: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'categorias',
-          key: 'id',
-          as: 'categoria_id',
-        }
-      },
-      slug: {
+      nombres: {
         type: Sequelize.STRING
       },
-      nombre: {
+      apellidos: {
         type: Sequelize.STRING
       },
-      descripcion: {
-        type: Sequelize.TEXT
-      },
-      imagen: {
+      direccion: {
         type: Sequelize.STRING
       },
-      precio: {
+      telefono: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      cantidad: {
+        type: Sequelize.INTEGER
+      },
+      total: {
         type: Sequelize.DECIMAL(10, 2)
       },
-      stock: {
-        type: Sequelize.INTEGER
+      metodo_pago: {
+        type: Sequelize.ENUM('contra-entrega', 'tarjeta')
+      },
+      grand_total: {
+        type: Sequelize.DECIMAL(10, 2)
+      },
+      estado: {
+        type: Sequelize.ENUM('pendiente', 'pagado')
       },
       createdAt: {
         allowNull: false,
@@ -46,6 +49,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Productos');
+    await queryInterface.dropTable('Compras');
   }
 };
